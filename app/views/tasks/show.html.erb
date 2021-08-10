@@ -1,17 +1,22 @@
-<h2><%= @task.title %></h2>
-<p><%= @task.details %></p>
-<div class="task-bar">
-  <ul class="task-options">
-    <%= link_to(edit_task_path) do %>
-      <i class="far fa-edit"></i>
+<div class="card">
+  <h2 class="card-header"><%= @task.title %></h2>
+  <div class="card-body">
+    <p><%= @task.details %></p>
+
+    <div class="task-bar">
+      <ul class="task-options">
+        <%= link_to(edit_task_path) do %>
+          <i class="far fa-edit"></i>
+        <% end %>
+        <%= link_to (task_path(@task)),
+                    method: :delete,
+                    data: { confirm: "Are you sure?" } do %>
+          <i class='fas fa-trash-alt'></i> 
+        <% end %>
+      </ul>
+    </div>
+    <%= link_to (tasks_path) do %>
+      <i class="fas fa-undo-alt"> Go back</i>
     <% end %>
-    <%= link_to (task_path(@task)),
-                method: :delete,
-                data: { confirm: "Are you sure?" } do %>
-      <i class='fas fa-trash-alt'></i> 
-    <% end %>
-  </ul>
+  </div>
 </div>
-<%= link_to (tasks_path) do %>
-  <i class="fas fa-undo-alt"> Go back</i>
-<% end %>
