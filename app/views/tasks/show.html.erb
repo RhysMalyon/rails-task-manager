@@ -1,10 +1,17 @@
-<div class="container">
-  <%= link_to "Edit this task", edit_task_path %>
-  <h2><%= @task.title %></h2>
-  <p><%= @task.details %></p>
-  <%= link_to "Delete #{@task.title}",
-              task_path(@task),
-              method: :delete,
-              data: { confirm: "Are you sure?" } %>
-  <%= link_to "Go back", tasks_path %>
+<h2><%= @task.title %></h2>
+<p><%= @task.details %></p>
+<div class="task-bar">
+  <ul class="task-options">
+    <%= link_to(edit_task_path) do %>
+      <i class="far fa-edit"></i>
+    <% end %>
+    <%= link_to (task_path(@task)),
+                method: :delete,
+                data: { confirm: "Are you sure?" } do %>
+      <i class='fas fa-trash-alt'></i> 
+    <% end %>
+  </ul>
 </div>
+<%= link_to (tasks_path) do %>
+  <i class="fas fa-undo-alt"> Go back</i>
+<% end %>
